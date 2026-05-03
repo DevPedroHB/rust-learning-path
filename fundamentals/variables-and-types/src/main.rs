@@ -7,12 +7,14 @@
 * - Exe3: https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=0abcbb7f268026f5fa057ed2b730e899
 * */
 
+mod primitive_data;
+
 fn main() {
   let mut x: i32 = 10;
   let y: u32 = 8;
   let z: f64 = 3.14;
 
-  println!("X é: {x}, Y é: {y}, Z é: {z}");
+  println!("X é: {x}\nY é: {y}\nZ é: {z}");
 
   x = 11;
 
@@ -52,4 +54,6 @@ fn main() {
   let first_letter: char = 'P';
 
   println!("Primeira letra é: {first_letter}");
+
+  primitive_data::primitive_data();
 }
