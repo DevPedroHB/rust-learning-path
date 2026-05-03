@@ -8,6 +8,7 @@
 * */
 
 mod composite_data;
+mod functions;
 mod primitive_data;
 
 fn main() {
@@ -59,4 +60,6 @@ fn main() {
   primitive_data::primitive_data();
 
   composite_data::composite_data();
+
+  functions::execute();
 }
