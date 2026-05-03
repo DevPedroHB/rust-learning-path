@@ -1,0 +1,5 @@
+[workspace]
+members = [
+  "fundamentals/hello-world/hello-cargo",
+  "fundamentals/variables-and-types",
+]
