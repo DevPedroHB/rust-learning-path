@@ -3,9 +3,13 @@
 version = 4
 
 [[package]]
+name = "fundamentals"
+version = "0.1.0"
+
+[[package]]
 name = "hello-cargo"
 version = "0.1.0"
 
 [[package]]
-name = "variables-and-types"
+name = "ownership"
 version = "0.1.0"

@@ -7,13 +7,7 @@
 * - Exe3: https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=0abcbb7f268026f5fa057ed2b730e899
 * */
 
-mod composite_data;
-mod conditionals;
-mod functions;
-mod loops;
-mod primitive_data;
-
-fn main() {
+pub fn variables_and_types() {
   let mut x: i32 = 10;
   let y: u32 = 8;
   let z: f64 = 3.14;
@@ -58,14 +52,4 @@ fn main() {
   let first_letter: char = 'P';
 
   println!("Primeira letra é: {first_letter}");
-
-  primitive_data::primitive_data();
-
-  composite_data::composite_data();
-
-  functions::functions();
-
-  conditionals::conditionals();
-
-  loops::loops();
 }

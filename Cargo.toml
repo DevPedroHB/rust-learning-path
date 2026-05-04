@@ -1,5 +1,2 @@
 [workspace]
-members = [
-  "fundamentals/hello-world/hello-cargo",
-  "fundamentals/variables-and-types",
-]
+members = ["fundamentals", "hello-world/hello-cargo", "ownership"]
