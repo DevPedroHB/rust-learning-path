@@ -8,6 +8,7 @@
 * */
 
 mod composite_data;
+mod conditionals;
 mod functions;
 mod primitive_data;
 
@@ -61,5 +62,7 @@ fn main() {
 
   composite_data::composite_data();
 
-  functions::execute();
+  functions::functions();
+
+  conditionals::conditionals();
 }

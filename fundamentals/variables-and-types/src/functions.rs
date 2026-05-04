@@ -21,7 +21,7 @@ fn multiplication_table(n: u32) {
   }
 }
 
-pub fn execute() {
+pub fn functions() {
   let name = "Pedro Henrique";
 
   good_morning(name, "Bergamo");
