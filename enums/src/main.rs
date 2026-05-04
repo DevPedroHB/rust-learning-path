@@ -1,51 +1,81 @@
+#[derive(Debug)]
 enum CardType {
   Debit,
   Credit,
 }
 
+#[derive(Debug)]
 enum PaymentMethod {
   Pix(String),
   Card(CardType, u32),
   Ticket,
 }
 
-fn get_user_name(email: &String) -> Option<String> {
-  if email == "pix@pedrohb.dev" {
-    return Some(String::from("Pedro Henrique Bergamo"));
-  }
-
-  return None;
+#[derive(Debug)]
+enum PaymentError {
+  InvalidValue,
+  UserNotFound,
 }
 
-fn process_payment(method: PaymentMethod, value: f64) {
-  match method {
-    PaymentMethod::Pix(key) => match get_user_name(&key) {
-      Some(name) => {
-        println!("Gerando o QR Code com a chave {key} no valor de R$ {value:.2} para {name}.")
-      }
-      None => println!("Gerando o QR Code com a chave {key} no valor de R$ {value:.2}."),
-    },
-    PaymentMethod::Card(card_type, number) => match card_type {
-      CardType::Debit => {
-        println!("Passando o cartão de debito com o numero {number} no valor de R$ {value:.2}.")
-      }
-      CardType::Credit => {
-        println!("Passando o cartão de credito com o numero {number} no valor de R$ {value:.2}.")
-      }
-    },
-    PaymentMethod::Ticket => println!("Gerando o boleto no valor de R$ {value:.2}."),
+const EMAIL: &str = "pix@pedrohb.dev";
+
+fn get_user_name(email: &str) -> Result<&'static str, PaymentError> {
+  if email == EMAIL {
+    return Ok("Pedro Henrique Bergamo");
   }
+
+  return Err(PaymentError::UserNotFound);
+}
+
+fn validate_value(value: f64) -> Result<f64, PaymentError> {
+  if value <= 0.0 {
+    return Err(PaymentError::InvalidValue);
+  }
+
+  return Ok(value);
+}
+
+fn process_payment(email: &str, method: &PaymentMethod, value: f64) -> Result<(), PaymentError> {
+  let name = get_user_name(email)?;
+  let value = validate_value(value)?;
+
+  match method {
+    PaymentMethod::Pix(key) => {
+      println!("QR Code gerado com chave {key} no valor de R$ {value:.2} para {name}.");
+    }
+    PaymentMethod::Card(card_type, number) => {
+      let card_label = match card_type {
+        CardType::Debit => "débito",
+        CardType::Credit => "crédito",
+      };
+
+      println!("Cartão {card_label} {number} no valor de R$ {value:.2}.");
+    }
+    PaymentMethod::Ticket => println!("Boleto gerado no valor de R$ {value:.2}."),
+  }
+
+  return Ok(());
+}
+
+fn finalize_purchase(email: &str, method: &PaymentMethod, value: f64) -> Result<(), PaymentError> {
+  let name = get_user_name(email)?;
+  let value = validate_value(value)?;
+
+  println!("Compra finalizada para {name} no valor de R$ {value:.2}. Método: {method:?}");
+
+  return Ok(());
 }
 
 fn main() {
-  let email = String::from("pix@pedrohb.dev");
+  let method = PaymentMethod::Pix(String::from(EMAIL));
 
-  process_payment(PaymentMethod::Pix(String::from("pix@pedrohb.de")), 49.90);
-  process_payment(PaymentMethod::Card(CardType::Debit, 1234), 49.90);
-  process_payment(PaymentMethod::Card(CardType::Credit, 1234), 49.90);
-  process_payment(PaymentMethod::Ticket, 49.90);
+  match process_payment(EMAIL, &method, 49.90) {
+    Ok(_) => println!("Pagamento realizado com sucesso!"),
+    Err(e) => println!("Erro: {e:?}"),
+  }
 
-  if let Some(name) = get_user_name(&email) {
-    println!("Olá, {name}!");
+  match finalize_purchase(EMAIL, &method, 49.90) {
+    Ok(_) => println!("Compra finalizada com sucesso!"),
+    Err(e) => println!("Erro: {e:?}"),
   }
 }
