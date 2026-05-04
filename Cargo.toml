@@ -5,4 +5,5 @@ members = [
   "hello-world/hello-cargo",
   "ownership",
   "slices",
+  "structs",
 ]
