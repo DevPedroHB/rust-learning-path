@@ -10,6 +10,7 @@
 mod composite_data;
 mod conditionals;
 mod functions;
+mod loops;
 mod primitive_data;
 
 fn main() {
@@ -65,4 +66,6 @@ fn main() {
   functions::functions();
 
   conditionals::conditionals();
+
+  loops::loops();
 }
