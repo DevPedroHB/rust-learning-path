@@ -6,4 +6,5 @@ members = [
   "ownership",
   "slices",
   "structs",
+  "tuple_structs",
 ]
