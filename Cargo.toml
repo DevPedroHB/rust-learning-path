@@ -1,6 +1,7 @@
 [workspace]
 members = [
   "borrowing",
+  "enums",
   "fundamentals",
   "hello-world/hello-cargo",
   "ownership",
