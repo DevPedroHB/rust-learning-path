@@ -4,8 +4,11 @@ members = [
   "enums",
   "fundamentals",
   "hello-world/hello-cargo",
+  "my_store",
   "ownership",
   "slices",
   "structs",
   "tuple_structs",
+  "store_workspace/store_cli",
+  "store_workspace/store_core",
 ]

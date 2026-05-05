@@ -19,11 +19,26 @@ name = "hello-cargo"
 version = "0.1.0"
 
 [[package]]
+name = "my_store"
+version = "0.1.0"
+
+[[package]]
 name = "ownership"
 version = "0.1.0"
 
 [[package]]
 name = "slices"
+version = "0.1.0"
+
+[[package]]
+name = "store_cli"
+version = "0.1.0"
+dependencies = [
+ "store_core",
+]
+
+[[package]]
+name = "store_core"
 version = "0.1.0"
 
 [[package]]
