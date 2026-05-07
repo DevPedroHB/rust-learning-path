@@ -15,4 +15,5 @@ members = [
   "github_finder",
   "store",
   "event_processor",
+  "text_parser",
 ]
