@@ -13,5 +13,6 @@ members = [
   "store_workspace/store_cli",
   "store_workspace/store_core",
   "github_finder",
-  "store", "event_processor",
+  "store",
+  "event_processor",
 ]
